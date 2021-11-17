@@ -19,6 +19,16 @@
 ![ls_pts1](https://user-images.githubusercontent.com/92984527/142139900-1103bb6b-f8f1-4669-aa96-c044652bbe5e.png)
 
 ## 5. Получится ли одновременно передать команде файл на stdin и вывести ее stdout в другой файл? Приведите работающий пример.
+	`vagrant@vagrant:~$ cat test_inout_in
+	work in bash
+	vagrant@vagrant:~$ cat test_inout_out
+	cat: test_inout_out: No such file or directory
+	vagrant@vagrant:~$ cat <test_inout_in >test_inout_out
+	vagrant@vagrant:~$ cat test_inout_out
+	work in bash
+	vagrant@vagrant:~$`
+
+![image](https://user-images.githubusercontent.com/92984527/142154697-96432929-7bf6-431a-87e0-6e174e0645bc.png)
 ## 6. Получится ли вывести находясь в графическом режиме данные из PTY в какой-либо из эмуляторов TTY? Сможете ли вы наблюдать выводимые данные?
 ## 7. Выполните команду `bash 5>&1`. К чему она приведет? Что будет, если вы выполните `echo netology > /proc/$$/fd/5`? Почему так происходит?
 ## 8. Получится ли в качестве входного потока для pipe использовать только stderr команды, не потеряв при этом отображение stdout на pty? Напоминаем: по умолчанию через pipe передается только stdout команды слева от `|` на stdin команды справа.
