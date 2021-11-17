@@ -30,6 +30,22 @@
 
 ![image](https://user-images.githubusercontent.com/92984527/142154697-96432929-7bf6-431a-87e0-6e174e0645bc.png)
 ## 6. Получится ли вывести находясь в графическом режиме данные из PTY в какой-либо из эмуляторов TTY? Сможете ли вы наблюдать выводимые данные?
+Вывод в терминал:
+
+	`vagrant@vagrant:~$ who
+	vagrant  tty1         2021-11-17 08:05
+	vagrant  pts/0        2021-11-17 08:04 (10.0.2.2)
+	vagrant@vagrant:~$ tty
+	/dev/pts/0
+	vagrant@vagrant:~$ echo Helo world from pts0 to tty1 >/dev/tty1
+	vagrant@vagrant:~$`
+
+Перенаправление в PTY:
+
+	`echo Not Helo but Hello world from tty1 to pts0 >/dev/pts/0`
+
+![pts_tty](https://user-images.githubusercontent.com/92984527/142162564-a8ba5f6c-c0ba-41b1-a4eb-0f98a84586f8.png)
+
 ## 7. Выполните команду `bash 5>&1`. К чему она приведет? Что будет, если вы выполните `echo netology > /proc/$$/fd/5`? Почему так происходит?
 ## 8. Получится ли в качестве входного потока для pipe использовать только stderr команды, не потеряв при этом отображение stdout на pty? Напоминаем: по умолчанию через pipe передается только stdout команды слева от `|` на stdin команды справа.
 Это можно сделать, поменяв стандартные потоки местами через промежуточный новый дескриптор, который вы научились создавать в предыдущем вопросе.
