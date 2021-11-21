@@ -89,12 +89,10 @@
 ![SSH](https://user-images.githubusercontent.com/92984527/142750359-d67f06f2-67fc-4a6d-8814-4f0cb2bd6e79.png)
 
 ## 13. Бывает, что есть необходимость переместить запущенный процесс из одной сессии в другую. Попробуйте сделать это, воспользовавшись `reptyr`. Например, так можно перенести в `screen` процесс, который вы запустили по ошибке в обычной SSH-сессии.
+При выполнении ругался на `/etc/sysctl.d/10-ptrace.conf` и `/proc/sys/kernel/yama/ptrace_scope`. Поправил переменные, после этого заработало.
 
- /etc/sysctl.d/10-ptrace.conf
-  echo 0 > /proc/sys/kernel/yama/ptrace_scope
-  
+![reptyr](https://user-images.githubusercontent.com/92984527/142755395-ea974538-3df1-4059-b126-9435d1a6df42.png)
 
+![reptyr_2](https://user-images.githubusercontent.com/92984527/142755425-00b0afa1-ea94-46b2-b414-3ed572b9c50f.png)
 
-
- 
 ## 14. `sudo echo string > /root/new_file` не даст выполнить перенаправление под обычным пользователем, так как перенаправлением занимается процесс shell'а, который запущен без `sudo` под вашим пользователем. Для решения данной проблемы можно использовать конструкцию `echo string | sudo tee /root/new_file`. Узнайте что делает команда `tee` и почему в отличие от `sudo echo` команда с `sudo tee` будет работать.
